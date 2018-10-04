@@ -1,0 +1,11 @@
+framework module D3CollectionView {
+  umbrella header "D3CollectionView.h"
+
+  export *
+  module * { export * }
+}
+
+module D3CollectionView.Swift {
+    header "D3CollectionView-Swift.h"
+    requires objc
+}
