@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var d3List: D3List!
+
     let reuseSubCollectionViewIdentifier = "SubCollectionViewIdentifier"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         
         view.register(ExampleCardCell.self, forCellWithReuseIdentifier: "ExampleCell")
         view.delegate = self
+        
         
         view.backgroundColor = UIColor.white
         view.dataSource = self
