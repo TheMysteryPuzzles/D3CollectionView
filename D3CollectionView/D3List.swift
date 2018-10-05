@@ -2,9 +2,7 @@
 
 import UIKit
 
-let reuseD3ListItemIdentifier = "D3ListItemIdentifier"
 let reuseSubCollectionViewIdentifier = "SubCollectionViewIdentifier"
-
 
 public class D3List : UIView {
     
@@ -19,6 +17,7 @@ public class D3List : UIView {
     
     public var sideInset: CGFloat = 20 {
         didSet{
+           
             setD3ListContentInsets()
         }
     }
@@ -97,25 +96,7 @@ extension D3List: UICollectionViewDelegate, UICollectionViewDataSource {
         return self.numberOfItems
     }
     
-    public func reloadData(){
-        d3ListView.reloadData()
-    }
-    
-    public func register(_ cellClass: AnyClass? , forCellWithReuseIdentifier identifier: String){
-        d3ListView.register(cellClass, forCellWithReuseIdentifier: identifier)
-    }
-    
-    public func register(nib: UINib?, forCellWithReuseIdentifier identifier: String){
-        d3ListView.register(nib, forCellWithReuseIdentifier: identifier)
-    }
-    
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate?.didSroll?(d3ListView: d3ListView)
-    }
+  
     
     fileprivate func setupD3ListView(){
         
@@ -166,6 +147,53 @@ extension D3List: UICollectionViewDelegateFlowLayout {
     
         return CGSize(width: cellWidth, height: cellHeight)
         
+    }
+    
+}
+
+extension D3List{
+    
+    public func reloadData(){
+        d3ListView.reloadData()
+    }
+    
+    public func register(_ cellClass: AnyClass? , forCellWithReuseIdentifier identifier: String){
+        d3ListView.register(cellClass, forCellWithReuseIdentifier: identifier)
+    }
+    
+    public func register(nib: UINib?, forCellWithReuseIdentifier identifier: String){
+        d3ListView.register(nib, forCellWithReuseIdentifier: identifier)
+    }
+    
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.didSroll?(d3ListView: d3ListView)
+    }
+    
+    
+    public func performBatchUpdates(_ updates: (() -> Void)?, completion: ((Bool) -> Void)? = nil){
+        self.d3ListView.performBatchUpdates(updates, completion: completion)
+        
+        
+    }
+    
+    public func insertItems(at indexPaths: [IndexPath]){
+        d3ListView.insertItems(at: indexPaths)
+    }
+    
+    public func deleteItems(at indexPaths: [IndexPath]){
+        d3ListView.deleteItems(at: indexPaths)
+        
+    }
+    public func numberOfItems(inSection section: Int) -> Int{
+        return self.d3ListView.numberOfItems(inSection: section)
+        
+    }
+    public func reloadItems(at indexPaths: [IndexPath]){
+        self.d3ListView.reloadItems(at: indexPaths)
     }
     
 }
