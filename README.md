@@ -1,6 +1,6 @@
 # D3CollectionView
-![](d1.gif)
-![](d2.gif)
+![](01 2.gif)
+![](02.gif)
 
 # UICollectionView inside UICollectionViewCell. 
 
