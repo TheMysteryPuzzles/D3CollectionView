@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		961DE144218E164C00BBD8DC /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961DE143218E164C00BBD8DC /* Helpers.swift */; };
 		96F3AA3921669DF000D0C174 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F3AA3821669DF000D0C174 /* AppDelegate.swift */; };
 		96F3AA3B21669DF000D0C174 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F3AA3A21669DF000D0C174 /* ViewController.swift */; };
 		96F3AA3E21669DF000D0C174 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F3AA3C21669DF000D0C174 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		961DE143218E164C00BBD8DC /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		96F3AA3521669DF000D0C174 /* D3CollectionViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D3CollectionViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F3AA3821669DF000D0C174 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96F3AA3A21669DF000D0C174 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				96F3AA5221669E0700D0C174 /* D3List.swift */,
 				96F3AA5321669E0700D0C174 /* D3ListDelegate.swift */,
 				96F3AA5621669E0700D0C174 /* D3ListDatasource.swift */,
+				961DE143218E164C00BBD8DC /* Helpers.swift */,
 			);
 			path = D3CollectionView;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96F3AA5E21669E0700D0C174 /* D3List.swift in Sources */,
+				961DE144218E164C00BBD8DC /* Helpers.swift in Sources */,
 				96F3AAA12166A6F900D0C174 /* D3ListCell.swift in Sources */,
 				96F3AA5A21669E0700D0C174 /* SubCollectionViewDataSource.swift in Sources */,
 				96F3AA3B21669DF000D0C174 /* ViewController.swift in Sources */,

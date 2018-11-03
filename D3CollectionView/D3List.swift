@@ -107,6 +107,7 @@ extension D3List: UICollectionViewDelegate, UICollectionViewDataSource {
         d3ListView.showsVerticalScrollIndicator = false
         d3ListView.delegate = self
         d3ListView.dataSource = self
+
         
         self.numberOfItems = dataSource?.numberOfItems(inD3List: d3ListView) ?? 0
         self.addSubview(d3ListView)
@@ -136,7 +137,7 @@ extension D3List: UICollectionViewDelegateFlowLayout {
             // set custom sizes and make sure sizes are not negative, if they are, dont subtract the insets
             
             cellWidth = customSize.width - (customSize.width - xInsets > 0 ? xInsets : 0)
-            cellHeight = customSize.width - (customSize.height - xInsets > 0 ? yInsets : 0)
+            cellHeight = customSize.height - (customSize.height - yInsets > 0 ? yInsets : 0)
         }else{
             cellWidth = collectionView.frame.size.width - xInsets
             cellHeight = collectionView.frame.size.height - yInsets

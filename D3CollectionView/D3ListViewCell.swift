@@ -5,38 +5,44 @@ import UIKit
 
 @objc open class D3ListViewCell: UICollectionViewCell {
     
-    open var subdataSource: SubCollectionViewDataSource?
-    open var subDeleate: SubCollectionViewDelegate!
+    open var subCollectionViewdataSource: SubCollectionViewDataSource?
+    open var subCollectionViewDelegate: SubCollectionViewDelegate?
+    open var subCollectionViewFrame: CGRect?
+    open var subCollectionViewItemSize: CGSize?
+       
     
     
-    lazy var subCollectionViewFlowLayout: SubCollectionViewFlowLayout = {
+    lazy private var subCollectionViewFlowLayout: SubCollectionViewFlowLayout = {
         let flowLayout = SubCollectionViewFlowLayout()
+        flowLayout.itemSize = subCollectionViewItemSize!
         flowLayout.scrollDirection = .horizontal
-        flowLayout.sideItemAlpha = 1
+        flowLayout.sideItemAlpha = 1.0
         flowLayout.sideItemScale = 0.9
-        flowLayout.spacingMode = SpacingMode.overlap(visibleOffset: 60)
-        let cellSize = CGSize(width: 300 , height: 450)
-        flowLayout.itemSize = cellSize
+        flowLayout.spacingMode = SpacingMode.overlap(visibleOffset: 100)
         return flowLayout
     }()
     
     lazy private var subCollectionView : UICollectionView = {
-      
-      let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: subCollectionViewFlowLayout)
-     
+        assert(subCollectionViewFrame != nil, "In d3List(_ cellForItemAt) method Please Set subCollectionViewFrame property of D3ListViewCell in order to add subCollectionView")
+        assert(subCollectionViewItemSize != nil, "In d3List(_ cellForItemAt) method Please set subCollectionViewItemSizeProperty of D3ListViewcell")
+        
+      let collectionView = UICollectionView(frame: subCollectionViewFrame!, collectionViewLayout: subCollectionViewFlowLayout)
+        collectionView.layer.masksToBounds = true
        return collectionView
     }()
     
     public func addSubCollectionView(index: Int){
-        subCollectionView.backgroundColor = UIColor.clear
-        subCollectionView.dataSource = self
        
-        subCollectionView.decelerationRate = UIScrollViewDecelerationRateFast
-         subCollectionView.delegate = self
-        subCollectionView.tag = index
-       
-        self.addSubview(subCollectionView)
-    }
+            subCollectionView.backgroundColor = UIColor.clear
+        subCollectionView.showsVerticalScrollIndicator = false
+            subCollectionView.dataSource = self
+            subCollectionView.decelerationRate = UIScrollViewDecelerationRateFast
+            subCollectionView.delegate = self
+            subCollectionView.tag = index
+            
+            self.addSubview(subCollectionView)
+        }
+    
   
      public func registerSubCollectionView(_ cellClass: AnyClass? , forCellWithReuseIdentifier identifier: String){
         self.subCollectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
@@ -61,18 +67,18 @@ import UIKit
 }
 
 extension D3ListViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
-    
+   
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return (subdataSource?.collectionView(collectionView, numberOfItemsInSection: section))!
+        return (subCollectionViewdataSource?.collectionView(collectionView, numberOfItemsInSection: section))!
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return (subdataSource?.collectionView(collectionView, cellForItemAt: indexPath))!
+        return (subCollectionViewdataSource?.collectionView(collectionView, cellForItemAt: indexPath))!
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      self.subDeleate.collectionView(collectionView, didSelectItemAt: indexPath)
+      self.subCollectionViewDelegate?.collectionView(collectionView, didSelectItemAt: indexPath)
     }
 }
 
